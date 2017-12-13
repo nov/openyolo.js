@@ -43,13 +43,13 @@ window.onGoogleYoloLoad = (googleyolo) => {
   console.info('Ready for YOLO');
 
   app.signIn().then(app.signedIn, error => {
-    console.error(error);
+    console.error('Sign-in failed', error);
 
     if (error.type === 'noCredentialsAvailable') {
       app.signUp().then(credential => {
         app.signedIn(credential);
       }, error => {
-        console.info('Sign-up failed');
+        console.info('Sign-up failed', error);
       });
     }
   }).catch(error => {
