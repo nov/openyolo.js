@@ -49,7 +49,7 @@ window.onGoogleYoloLoad = (googleyolo) => {
       app.signUp().then(credential => {
         app.signedIn(credential);
       }, error => {
-        console.info('Sign-up failed', error);
+        console.error('Sign-up failed', error);
       });
     }
   }).catch(error => {
