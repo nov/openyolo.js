@@ -1,22 +1,58 @@
 const GOOGLE_CLIENT_ID = '97329362365-hbe147jo6o1m56e316efsp89d6s22k46.apps.googleusercontent.com';
 
-window.onGoogleYoloLoad = (googleyolo) => {
-  console.info('Ready for YOLO');
+let app = {};
 
-  googleyolo.retrieve({
+app.signIn = () => {
+  return googleyolo.retrieve({
     supportedAuthMethods: [
-      "https://accounts.google.com",
-      "googleyolo://id-and-password"
+      'https://accounts.google.com',
+      'googleyolo://id-and-password'
     ],
     supportedIdTokenProviders: [
       {
-        uri: "https://accounts.google.com",
+        uri: 'https://accounts.google.com',
         clientId: GOOGLE_CLIENT_ID
       }
     ]
-  }).then(credential => {
-    console.info(credential);
-  }, (error) => {
+  });
+};
+
+app.signedIn = (credential) => {
+  console.info('signed-in with', credential);
+};
+
+app.signUp = () => {
+  return googleyolo.hint({
+    supportedAuthMethods: [
+      'https://accounts.google.com'
+    ],
+    supportedIdTokenProviders: [
+      {
+        uri: 'https://accounts.google.com',
+        clientId: GOOGLE_CLIENT_ID
+      }
+    ]
+  });
+}
+
+app.signOut = () => {
+  return googleyolo.disableAutoSignIn();
+}
+
+window.onGoogleYoloLoad = (googleyolo) => {
+  console.info('Ready for YOLO');
+
+  app.signIn().then(app.signedIn, error => {
     console.error(error);
+
+    if (error.type === 'noCredentialsAvailable') {
+      app.signUp().then(credential => {
+        app.signedIn(credential);
+      }, error => {
+        console.info('Sign-up failed');
+      });
+    }
+  }).catch(error => {
+
   });
 };
