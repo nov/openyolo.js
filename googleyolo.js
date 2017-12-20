@@ -41,6 +41,7 @@ app.signedIn = (credential) => {
     app.signOut().then(() => {
       location.reload();
     });
+    return false;
   };
 };
 
