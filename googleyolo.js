@@ -23,7 +23,7 @@ app.signedIn = (credential) => {
 
   let [header, payload, signature] = credential.idToken.split('.');
   let prettyPrint = (jwt_segment) => {
-    JSON.stringify(JSON.parse(atob(jwt_segment)), false, 2);
+    return JSON.stringify(JSON.parse(atob(jwt_segment)), false, 2);
   };
   document.querySelector('#idtoken .header').innerText = prettyPrint(header);
   document.querySelector('#idtoken .body').innerText = prettyPrint(payload);
