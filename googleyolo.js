@@ -26,7 +26,7 @@ app.signedIn = (credential) => {
     return JSON.stringify(JSON.parse(atob(jwt_segment)), false, 2);
   };
   document.querySelector('#idtoken .header').innerText = prettyPrint(header);
-  document.querySelector('#idtoken .body').innerText = prettyPrint(payload);
+  document.querySelector('#idtoken .payload').innerText = prettyPrint(payload);
 };
 
 app.signUp = () => {
