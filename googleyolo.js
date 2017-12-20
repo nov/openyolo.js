@@ -20,6 +20,13 @@ app.signIn = () => {
 app.signedIn = (credential) => {
   console.info('signed-in with', credential);
   document.querySelector('#welcome').innerText = "Welcome, " + credential.displayName + '!';
+  let [header, payload, signature] = credential.idToken.split('.');
+  document.querySelector('#idtoken .header').innerText(prettyPrint(header));
+  document.querySelector('#idtoken .body').innerText(prettyPrint(payload));
+
+  let prettyPrint = (jwt_segment) => {
+    JSON.stringify(JSON.parse(atob(jwt_segment)), false, 2);
+  };
 };
 
 app.signUp = () => {
