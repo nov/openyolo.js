@@ -38,9 +38,7 @@ app.signedIn = (credential) => {
   elements.forget_me.style = 'display: block;';
 
   elements.forget_me.onclick = () => {
-    app.signOut().then(() => {
-      location.reload();
-    })
+    app.signOut().then(location.reload)
   }
 };
 
