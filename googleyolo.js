@@ -35,7 +35,7 @@ app.signedIn = (credential) => {
   };
   elements.id_token.header.innerText = prettyPrint(header);
   elements.id_token.payload.innerText = prettyPrint(payload);
-  elements.forget_me.
+  elements.forget_me.style = 'display: block;';
 
   elements.forget_me.onclick = () => {
     app.signOut().then(() => {
