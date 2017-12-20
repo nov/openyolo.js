@@ -1,7 +1,7 @@
 const GOOGLE_CLIENT_ID = '97329362365-hbe147jo6o1m56e316efsp89d6s22k46.apps.googleusercontent.com';
 
 let app = {};
-let elements {
+let elements = {
   welcome: document.querySelector('#welcome'),
   id_token: {
     header: document.querySelector('#idtoken .header'),
@@ -35,6 +35,7 @@ app.signedIn = (credential) => {
   };
   elements.id_token.header.innerText = prettyPrint(header);
   elements.id_token.payload.innerText = prettyPrint(payload);
+  elements.forget_me.
 
   elements.forget_me.onclick = () => {
     app.signOut().then(() => {
