@@ -19,6 +19,7 @@ app.signIn = () => {
 
 app.signedIn = (credential) => {
   console.info('signed-in with', credential);
+  document.querySelector('h1').innerText = "Welcome, " + credential.displayName + '!';
 };
 
 app.signUp = () => {
