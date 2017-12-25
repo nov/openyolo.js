@@ -1,5 +1,17 @@
 const GOOGLE_CLIENT_ID = '97329362365-hbe147jo6o1m56e316efsp89d6s22k46.apps.googleusercontent.com';
 const FB_CLIENT_ID = '158245434257042';
+const SUPPORTED_AMRS = [
+  'https://www.facebook.com',
+  'https://accounts.google.com',
+  'googleyolo://id-and-password'
+]
+const SUPPORTED_IDPS = [{
+  uri: 'https://www.facebook.com',
+  clientId: FB_CLIENT_ID
+}, {
+  uri: 'https://accounts.google.com',
+  clientId: GOOGLE_CLIENT_ID
+}];
 
 let app = {};
 let elements = {
@@ -13,18 +25,8 @@ let elements = {
 
 app.signIn = () => {
   return googleyolo.retrieve({
-    supportedAuthMethods: [
-      'https://www.facebook.com',
-      'https://accounts.google.com',
-      'googleyolo://id-and-password'
-    ],
-    supportedIdTokenProviders: [{
-      uri: 'https://www.facebook.com',
-      clientId: FB_CLIENT_ID
-    }, {
-      uri: 'https://accounts.google.com',
-      clientId: GOOGLE_CLIENT_ID
-    }]
+    supportedAuthMethods: SUPPORTED_AMRS,
+    supportedIdTokenProviders: SUPPORTED_IDPS
   });
 };
 
@@ -50,15 +52,8 @@ app.signedIn = (credential) => {
 
 app.signUp = () => {
   return googleyolo.hint({
-    supportedAuthMethods: [
-      'https://accounts.google.com'
-    ],
-    supportedIdTokenProviders: [
-      {
-        uri: 'https://accounts.google.com',
-        clientId: GOOGLE_CLIENT_ID
-      }
-    ]
+    supportedAuthMethods: SUPPORTED_AMRS,
+    supportedIdTokenProviders: SUPPORTED_IDPS
   });
 }
 
