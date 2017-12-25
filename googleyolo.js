@@ -21,7 +21,7 @@ let elements = {
     payload: document.querySelector('#idtoken .payload')
   },
   forget_me: document.querySelector('#forget-me')
-}
+};
 
 app.signIn = () => {
   return googleyolo.retrieve({
