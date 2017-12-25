@@ -1,4 +1,5 @@
 const GOOGLE_CLIENT_ID = '97329362365-hbe147jo6o1m56e316efsp89d6s22k46.apps.googleusercontent.com';
+const FB_CLIENT_ID = '158245434257042';
 
 let app = {};
 let elements = {
@@ -13,15 +14,17 @@ let elements = {
 app.signIn = () => {
   return googleyolo.retrieve({
     supportedAuthMethods: [
+      'https://www.facebook.com',
       'https://accounts.google.com',
       'googleyolo://id-and-password'
     ],
-    supportedIdTokenProviders: [
-      {
-        uri: 'https://accounts.google.com',
-        clientId: GOOGLE_CLIENT_ID
-      }
-    ]
+    supportedIdTokenProviders: [{
+      uri: 'https://www.facebook.com',
+      clientId: FB_CLIENT_ID
+    }, {
+      uri: 'https://accounts.google.com',
+      clientId: GOOGLE_CLIENT_ID
+    }]
   });
 };
 
