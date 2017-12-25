@@ -30,6 +30,17 @@ app.signIn = () => {
   });
 };
 
+app.signUp = () => {
+  return googleyolo.hint({
+    supportedAuthMethods: SUPPORTED_AMRS,
+    supportedIdTokenProviders: SUPPORTED_IDPS
+  });
+};
+
+app.signOut = () => {
+  return googleyolo.disableAutoSignIn();
+};
+
 app.signedIn = (credential) => {
   console.info('signed-in with', credential);
   elements.welcome.innerText = "Welcome, " + credential.displayName + '!';
@@ -48,17 +59,6 @@ app.signedIn = (credential) => {
     });
     return false;
   };
-};
-
-app.signUp = () => {
-  return googleyolo.hint({
-    supportedAuthMethods: SUPPORTED_AMRS,
-    supportedIdTokenProviders: SUPPORTED_IDPS
-  });
-};
-
-app.signOut = () => {
-  return googleyolo.disableAutoSignIn();
 };
 
 window.onGoogleYoloLoad = (googleyolo) => {
