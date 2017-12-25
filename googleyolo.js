@@ -4,7 +4,7 @@ const SUPPORTED_AMRS = [
   'https://www.facebook.com',
   'https://accounts.google.com',
   'googleyolo://id-and-password'
-]
+];
 const SUPPORTED_IDPS = [{
   uri: 'https://www.facebook.com',
   clientId: FB_CLIENT_ID
@@ -55,11 +55,11 @@ app.signUp = () => {
     supportedAuthMethods: SUPPORTED_AMRS,
     supportedIdTokenProviders: SUPPORTED_IDPS
   });
-}
+};
 
 app.signOut = () => {
   return googleyolo.disableAutoSignIn();
-}
+};
 
 window.onGoogleYoloLoad = (googleyolo) => {
   console.info('Ready for YOLO');
@@ -74,7 +74,5 @@ window.onGoogleYoloLoad = (googleyolo) => {
         console.error('Sign-up failed', error);
       });
     }
-  }).catch(error => {
-
   });
 };
