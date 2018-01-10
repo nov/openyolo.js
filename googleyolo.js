@@ -20,7 +20,8 @@ let elements = {
     header: document.querySelector('#idtoken .header'),
     payload: document.querySelector('#idtoken .payload')
   },
-  forget_me: document.querySelector('#forget-me')
+  forget_me: document.querySelector('#forget-me'),
+  signup: document.querySelector('#signup')
 };
 
 app.signIn = () => {
@@ -68,11 +69,13 @@ window.onGoogleYoloLoad = (googleyolo) => {
     console.error('Sign-in failed', error);
 
     if (error.type === 'noCredentialsAvailable') {
-      app.signUp().then(credential => {
-        app.signedIn(credential);
-      }, error => {
-        console.error('Sign-up failed', error);
-      });
+      elements.signup.onclick = () => {
+        app.signUp().then(credential => {
+          app.signedIn(credential);
+        }, error => {
+          console.error('Sign-up failed', error);
+        });
+      }
     }
   });
 };
