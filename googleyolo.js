@@ -1,7 +1,7 @@
 const GOOGLE_CLIENT_ID = '97329362365-hbe147jo6o1m56e316efsp89d6s22k46.apps.googleusercontent.com';
 const FB_CLIENT_ID = '158245434257042';
 const SUPPORTED_AMRS = [
-  'https://www.facebook.com',
+  // 'https://www.facebook.com',
   'https://accounts.google.com',
   'googleyolo://id-and-password'
 ];
